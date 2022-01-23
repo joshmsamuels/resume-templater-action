@@ -1,5 +1,5 @@
 const core = require('@actions/core')
-const populateResume = require("./populate-resume")
+const populateResume = require("./src/populate-resume")
 
 try {
   const dataURL = core.getInput('resume-data-url')
