@@ -1,15 +1,29 @@
-const core = require('@actions/core');
-const github = require('@actions/github');
+import core from '@actions/core'
+import { render } from 'mustache';
+import { get } from 'axios'
 
 try {
-  // `who-to-greet` input defined in action metadata file
-  const nameToGreet = core.getInput('who-to-greet');
-  console.log(`Hello ${nameToGreet}!`);
-  const time = (new Date()).toTimeString();
-  core.setOutput("time", time);
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
+  const dataURL = core.getInput('resume-data-url')
+  const templateURL = core.getInput('resume-template-url')
+
+  const mustacheConfig = {
+    tags: ["<%", "%>"],
+    escape: text => text
+  }
+
+  // const template = await fetch("https://gist.github.com/joshmsamuels/14a51cb1be5e15a3e54b0dccf3b80286")
+
+  const template = await get("https://gist.github.com/joshmsamuels/951453f0aade3a132f6c8cbd91fd8a52")
+
+  // console.log(render("Here is a sample template \{<%foo%>}", { foo: "MOOstashe" }, {}, mustacheConfig))
+  console.log(render(template, { foo: "MOOstashe" }, {}, mustacheConfig))
+
 } catch (error) {
-  core.setFailed(error.message);
+  if (error instanceof Error) {
+    core.setFailed(error.message);
+  } else {
+    core.setFailed(`error: ${error}`);
+  }
+
+  console.error(error)
 }

@@ -1,13 +1,13 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
-inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+name: 'Resume template populator'
+description: 'This action will take a resume in JSON format and fill it into a LaTeX or HTML resume'
+author: 'Joshua Samuels'
+inputs: 
+  resume-data-url:
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+    description: 'A link to the data that will be populated into your resume'
+  resume-template-url:
+    required: true
+    description: 'A link to your resume template'
 runs:
   using: 'node12'
   main: 'index.js'
