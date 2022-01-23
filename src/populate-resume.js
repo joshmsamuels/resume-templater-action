@@ -11,6 +11,7 @@ const fillResume = async() => {
     
     const template = await axios.get("https://gist.github.com/joshmsamuels/951453f0aade3a132f6c8cbd91fd8a52")
     
+    console.log("Template")
     // console.log(render("Here is a sample template \{<%foo%>}", { foo: "MOOstashe" }, {}, mustacheConfig))
     console.log(mustache.render(template, { foo: "MOOstashe" }, {}, mustacheConfig))
     
