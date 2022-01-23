@@ -5,7 +5,7 @@ try {
   const dataURL = core.getInput('resume-data-url')
   const templateURL = core.getInput('resume-template-url')
 
-  populateResume()
+  populateResume.fillResume()
   .then(resume => core.setOutput("filled", resume))
 
 } catch (error) {
