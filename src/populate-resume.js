@@ -16,3 +16,7 @@ const fillResume = async() => {
     
     return mustache.render(template, { foo: "MOOstashe" }, {}, mustacheConfig)
 }
+
+module.exports = {
+    fillResume,
+}
