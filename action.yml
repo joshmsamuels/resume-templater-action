@@ -8,6 +8,9 @@ inputs:
   resume-template-url:
     required: true
     description: 'A link to your resume template'
+outputs:
+  filled:
+    description: 'The time we greeted you'
 runs:
   using: 'node12'
   main: 'index.js'

@@ -17,6 +17,7 @@ try {
 
   // console.log(render("Here is a sample template \{<%foo%>}", { foo: "MOOstashe" }, {}, mustacheConfig))
   console.log(render(template, { foo: "MOOstashe" }, {}, mustacheConfig))
+  core.setOutput("filled", render(template, { foo: "MOOstashe" }, {}, mustacheConfig))
 
 } catch (error) {
   if (error instanceof Error) {
